@@ -9,21 +9,10 @@ starbound是要购买的，我想这也是这些docker镜像，不打包本地�
 
 初次打包有 1.3G 左右，多次测试下，删除了不必要的文件，只是方便自己开服和玩家们开服，剔除开服所需之外的文件，这样这个包只能用于开服，而无法游玩。
 
-**目录文件列表：**
-```shell
-.
-├── assets
-│   └── packed.pak  # 做了精简
-├── linux
-│   ├── sbinit.config
-│   └── starbound_server
-└── mods
-    └── contents.pak  # 汉化
-```
-
 
 ### 快速启动
-将镜像文件拷贝到服务器，然后执行docker导入指令，例如`starbound-server@1.4.4.tar`，镜像导入一次即可。
+将镜像文件拷贝到服务器，然后执行docker导入指令，镜像导入一次即可。
+[starbound-server@1.4.4.tar](https://github.com/hufang360/starbound-docker/releases/download/0.1/starbound-server@1.4.4.tar)
 ```shell
 docker load -i ./starbound-server@1.4.4.tar
 ```
@@ -83,6 +72,22 @@ docker remove starbound
 
 
 ### 开发
+由于 `packed.pak` 的文件大小超过100mb，无法作为源代码上传，请下载 [client.tar](https://github.com/hufang360/starbound-docker/releases/download/0.1/client.tar)，解压到当前目录使用。
+
+
+**`client`文件列表：**
+```shell
+.
+├── assets
+│   └── packed.pak  # 做了精简
+├── linux
+│   ├── sbinit.config
+│   └── starbound_server
+└── mods
+    └── starcore.pak  # 汉化
+```
+
+使用的是 “星核汉化组 简体中文”，创意工坊链接是：https://steamcommunity.com/sharedfiles/filedetails/?id=807695810
 
 ```shell
 # 构建镜像
