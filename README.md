@@ -11,17 +11,14 @@ starbound是要购买的，我想这也是这些docker镜像，不打包本地�
 
 
 ### 快速启动
-将镜像文件拷贝到服务器，然后执行docker导入指令，镜像导入一次即可。
-[starbound-server@1.4.4.tar](https://github.com/hufang360/starbound-docker/releases/download/0.1/starbound-server@1.4.4.tar)
-```shell
-docker load -i ./starbound-server@1.4.4.tar
-```
 
 创建容器
 ```shell
+docker pull hufang360/starbound-server:1.4.4
+
 docker run --name starbound -it \
   -p 21025:21025 \
-  -d starbound-server:1.4.4
+  -d hufang360/starbound-server:1.4.4
 ```
 
 服务器开放`21025`端口，就可以联机了。
@@ -34,7 +31,7 @@ docker run --name starbound -t \
   -p 21025:21025 \
   -v ./s1/mods:/mods \
   -v ./s1/storage:/storage \
-  -d starbound-server:1.4.4
+  -d hufang360/starbound-server:1.4.4
 ```
 注意：如果自定义了mods目录，记得重新添加汉化mod，因为映射后，就不再使用容器里的mod了。当然你可以从容器里面拷出这个汉化mod。
 
@@ -98,4 +95,10 @@ docker buildx build --platform linux/amd64 -t starbound-server:1.4.4 .
 
 # 导出镜像文件
 docker save -o ./starbound-server@1.4.4.tar starbound-server:1.4.4
+```
+
+同时打包`amd64`和`arm64`，并发布到dockerhub上。
+```shell
+docker buildx create --use
+docker buildx build --platform linux/amd64,linux/arm64 -t hufang360/starbound-server:1.4.4 --push .
 ```
