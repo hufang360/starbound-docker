@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="assets/starbound-docker.png" height="128">
+  <h1 align="center">starbound-docker</h1>
+</p>
+
 本项目只是开源打包方法，相关文件和程序版权属于starbound原公司！！！
 
 本项目只是开源打包方法，相关文件和程序版权属于starbound原公司！！！
@@ -8,6 +13,8 @@
 starbound是要购买的，我想这也是这些docker镜像，不打包本地的原因吧。
 
 初次打包有 1.3G 左右，多次测试下，删除了不必要的文件，只是方便自己开服和玩家们开服，剔除开服所需之外的文件，这样这个包只能用于开服，而无法游玩。
+
+
 
 
 ### 快速启动
